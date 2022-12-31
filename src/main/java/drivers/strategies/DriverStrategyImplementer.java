@@ -1,3 +1,6 @@
+package drivers.strategies;
+
+import Utils.Constants;
 import Utils.Utils;
 
 public class DriverStrategyImplementer {
@@ -7,7 +10,7 @@ public class DriverStrategyImplementer {
 		}
 
 		switch (strategy) {
-		case "Chrome":
+		case Constants.CHROME:
 			return new Chrome();
 		default:
 			return null;

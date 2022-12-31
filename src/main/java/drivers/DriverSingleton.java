@@ -1,13 +1,17 @@
+package drivers;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+
+import drivers.strategies.DriverStrategy;
+import drivers.strategies.DriverStrategyImplementer;
 
 public class DriverSingleton {
 	public static DriverSingleton instance;
 	public static WebDriver driver;
 
-	public DriverSingleton() {
-		instantiate("Chrome");
+	public DriverSingleton(String strategy) {
+		instantiate(strategy);
 	}
 
 	public WebDriver instantiate(String strategy) {
@@ -24,9 +28,9 @@ public class DriverSingleton {
 		return driver;
 	}
 
-	public static DriverSingleton getInstance() {
+	public static DriverSingleton getInstance(String strategy) {
 		if (instance == null)
-			return new DriverSingleton();
+			return new DriverSingleton(strategy);
 		return instance;
 	}
 
