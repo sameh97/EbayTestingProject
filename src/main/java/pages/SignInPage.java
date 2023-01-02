@@ -43,7 +43,7 @@ public class SignInPage {
 		signInEmail.sendKeys(email);
 
 		WebDriverWait waitForContinueButton = new WebDriverWait(driver, Duration.ofSeconds(15));
-		waitForContinueButton.until(ExpectedConditions.elementToBeClickable(signInContinueBtn));
+		waitForContinueButton.until(ExpectedConditions.eSlementToBeClickable(signInContinueBtn));
 		signInContinueBtn.click();
 
 		signInPasswordField.sendKeys(password);
