@@ -21,7 +21,9 @@ public class Main {
 
 		homePage.searchForProducts(frameworkProperties.getProperty("product_name"));
 		searchResultsPage.clickOnfirstResult();
-
+  
+		
+		
 //		homePage.clickSignIn();
 
 	}
