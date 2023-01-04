@@ -1,4 +1,5 @@
 package drivers;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -7,8 +8,8 @@ import drivers.strategies.DriverStrategy;
 import drivers.strategies.DriverStrategyImplementer;
 
 public class DriverSingleton {
-	public static DriverSingleton instance;
-	public static WebDriver driver;
+	private static DriverSingleton instance;
+	private static WebDriver driver;
 
 	public DriverSingleton(String strategy) {
 		instantiate(strategy);
