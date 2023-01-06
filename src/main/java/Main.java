@@ -1,7 +1,13 @@
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utils.FrameworkProperties;
 import drivers.DriverSingleton;
+import net.bytebuddy.asm.Advice.OffsetMapping.Target.AbstractReadOnlyAdapter;
 import pages.HomePage;
 import pages.SearchResultsPage;
 import pages.SignInPage;
@@ -21,10 +27,15 @@ public class Main {
 
 		homePage.searchForProducts(frameworkProperties.getProperty("product_name"));
 		searchResultsPage.clickOnfirstResult();
-  
-		
-		
+
 //		homePage.clickSignIn();
+
+//		try {
+//			Thread.sleep(15000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		DriverSingleton.closeObjectInstance();
 
 	}
 

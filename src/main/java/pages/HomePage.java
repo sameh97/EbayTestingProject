@@ -38,7 +38,9 @@ public class HomePage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		wait.until(ExpectedConditions.elementToBeClickable(searchInput));
 		searchInput.sendKeys(productName);
-		// TODO: add wait for srch btn
+
+		WebDriverWait waitForSearchButton = new WebDriverWait(driver, Duration.ofSeconds(15));
+		waitForSearchButton.until(ExpectedConditions.elementToBeClickable(searchButton));
 		searchButton.click();
 	}
 
