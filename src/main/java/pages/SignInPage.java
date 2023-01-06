@@ -16,11 +16,8 @@ public class SignInPage {
 
 	public SignInPage() {
 		driver = DriverSingleton.getDriver();
-		PageFactory.initElements(driver, null);
+		PageFactory.initElements(driver, this);
 	}
-
-	@FindBy(css = "#gh-ug > a")
-	private WebElement signInBtn;
 
 	@FindBy(id = "userid")
 	private WebElement signInEmail;
@@ -34,16 +31,14 @@ public class SignInPage {
 	@FindBy(id = "sgnBt")
 	private WebElement signInSubmitButton;
 
-	public void login(String email, String password) {
 
-		WebDriverWait waitForSignInButton = new WebDriverWait(driver, Duration.ofSeconds(15));
-		waitForSignInButton.until(ExpectedConditions.elementToBeClickable(signInBtn));
-		signInBtn.click();
+
+	public void login(String email, String password) {
 
 		signInEmail.sendKeys(email);
 
 		WebDriverWait waitForContinueButton = new WebDriverWait(driver, Duration.ofSeconds(15));
-		waitForContinueButton.until(ExpectedConditions.eSlementToBeClickable(signInContinueBtn));
+		waitForContinueButton.until(ExpectedConditions.elementToBeClickable(signInContinueBtn));
 		signInContinueBtn.click();
 
 		signInPasswordField.sendKeys(password);
@@ -53,6 +48,5 @@ public class SignInPage {
 		signInSubmitButton.click();
 
 	}
-	
-	//TODO: remove comment
+
 }
