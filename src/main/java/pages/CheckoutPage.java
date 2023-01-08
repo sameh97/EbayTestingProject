@@ -49,6 +49,15 @@ public class CheckoutPage {
 	@FindBy(id = "phoneNumber")
 	private WebElement phoneNumberInput;
 
+	@FindBy(css = "#mainContent > div.two-column.container.no-gutters > div > div.right-column.col-5.col-lg-4 > div:nth-child(1) > section > div.summary > div > table > tbody > tr:nth-child(1) > td.label > span")
+	private WebElement itemsNumber;
+
+	public String getSummaryProductsString() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait.until(ExpectedConditions.elementToBeClickable(itemsNumber));
+		return new String(itemsNumber.getText().split(" ")[1].split("")[1]);
+	}
+
 	public void clickConfirmAndPay() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		wait.until(ExpectedConditions.elementToBeClickable(confirmAndPaybutton));
