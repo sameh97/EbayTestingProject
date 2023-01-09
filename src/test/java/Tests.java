@@ -1,10 +1,10 @@
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import Utils.Constants;
@@ -17,6 +17,7 @@ import pages.HomePage;
 import pages.SearchResultsPage;
 import pages.SignInPage;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Tests {
 	static FrameworkProperties frameworkProperties;
 	static WebDriver driver;
@@ -38,7 +39,7 @@ public class Tests {
 	}
 
 	@Test
-	public void testingAddingProductToCartAsGuest() {
+	public void test01TestingAddingProductToCartAsGuest() {
 		driver.get(Constants.URL);
 		homePage.searchForProducts(frameworkProperties.getProperty("product_name"));
 		searchResultsPage.clickOnfirstResult();
