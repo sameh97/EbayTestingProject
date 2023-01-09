@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import Utils.Constants;
 import Utils.FrameworkProperties;
 import drivers.DriverSingleton;
 import net.bytebuddy.asm.Advice.OffsetMapping.Target.AbstractReadOnlyAdapter;
@@ -24,7 +25,7 @@ public class Main {
 
 		DriverSingleton.getInstance(frameworkProperties.getProperty("browser"));
 		WebDriver driver = DriverSingleton.getDriver();
-		driver.get("https://www.ebay.com");
+		driver.get(Constants.URL);
 
 		SignInPage signInPage = new SignInPage();
 		HomePage homePage = new HomePage();
