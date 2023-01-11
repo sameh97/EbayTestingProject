@@ -34,14 +34,27 @@ public class HomePage {
 	@FindBy(id = "gh-btn")
 	private WebElement searchButton;
 
-	public void searchForProducts(String productName) {
+	@FindBy(css = "#srp-river-results > ul > li:nth-child(3) > div > div.s-item__image-section > div > a > div > img")
+	private WebElement searchResults;
+
+	public Boolean searchElement(String searchStr) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		wait.until(ExpectedConditions.elementToBeClickable(searchInput));
-		searchInput.sendKeys(productName);
+		searchInput.sendKeys(searchStr);
 
 		WebDriverWait waitForSearchButton = new WebDriverWait(driver, Duration.ofSeconds(15));
 		waitForSearchButton.until(ExpectedConditions.elementToBeClickable(searchButton));
 		searchButton.click();
+
+		try {
+			if (searchResults.isEnabled()) {
+				return true;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+
+		return false;
 	}
 
 	public void clickSignIn() {

@@ -1,15 +1,18 @@
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import org.junit.runners.Parameterized;
 
 import Utils.Constants;
 import Utils.FrameworkProperties;
-import Utils.Utils;
 import drivers.DriverSingleton;
 import pages.BuyItemPage;
 import pages.CheckoutPage;
@@ -17,8 +20,8 @@ import pages.HomePage;
 import pages.SearchResultsPage;
 import pages.SignInPage;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Tests {
+@RunWith(Parameterized.class)
+public class SearchTests {
 	static FrameworkProperties frameworkProperties;
 	static WebDriver driver;
 	static SignInPage signInPage;
@@ -40,24 +43,26 @@ public class Tests {
 		checkoutPage = new CheckoutPage();
 	}
 
+	public SearchTests(String inputString, Boolean expectedResult) {
+		this.inputString = inputString;
+		this.expectedResult = expectedResult;
+	}
+
+	@Parameterized.Parameters
+	public static Collection<Object[]> searchOptions() {
+		return Arrays.asList(
+				new Object[][] { { "Shirt", true }, { "jeans", true }, { "dsadwevcewv", false }, { "iphone", true } });
+	}
+
 	@Test
-	public void test01TestingAddingProductToCartAsGuest() {
+	public void testingSearch() {
 		driver.get(Constants.URL);
-		homePage.searchElement(frameworkProperties.getProperty("product_name"));
-		searchResultsPage.clickOnfirstResult();
-
-		Utils.switchDriverToTab(1, driver);
-
-		buyItemPage.setQuantity(frameworkProperties.getProperty("number_of_items"));
-		buyItemPage.clickBuyNow();
-		buyItemPage.clickCheckoutAsGuest();
-		checkoutPage.ProvideBillingDetails();
-
-		assertEquals(checkoutPage.getSummaryProductsString(), frameworkProperties.getProperty("number_of_items"));
+		assertEquals(expectedResult, homePage.searchElement(inputString));
 	}
 
 	@AfterClass
 	public static void closeObjects() {
 		driver.close();
 	}
+
 }
