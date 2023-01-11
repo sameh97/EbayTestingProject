@@ -26,6 +26,8 @@ public class Tests {
 	static SearchResultsPage searchResultsPage;
 	static BuyItemPage buyItemPage;
 	static CheckoutPage checkoutPage;
+	static String inputString;
+	static Boolean expectedResult;
 
 	@BeforeClass
 	public static void initializeObjects() {
@@ -41,7 +43,7 @@ public class Tests {
 	@Test
 	public void test01TestingAddingProductToCartAsGuest() {
 		driver.get(Constants.URL);
-		homePage.searchForProducts(frameworkProperties.getProperty("product_name"));
+		homePage.searchElement(frameworkProperties.getProperty("product_name"));
 		searchResultsPage.clickOnfirstResult();
 
 		Utils.switchDriverToTab(1, driver);
@@ -56,6 +58,6 @@ public class Tests {
 
 	@AfterClass
 	public static void closeObjects() {
-		DriverSingleton.closeObjectInstance();
+		driver.close();
 	}
 }

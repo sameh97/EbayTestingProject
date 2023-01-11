@@ -33,7 +33,7 @@ public class Main {
 		BuyItemPage buyItemPage = new BuyItemPage();
 		CheckoutPage checkoutPage = new CheckoutPage();
 
-		homePage.searchForProducts(frameworkProperties.getProperty("product_name"));
+		homePage.searchElement(frameworkProperties.getProperty("product_name"));
 		searchResultsPage.clickOnfirstResult();
 
 		ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
