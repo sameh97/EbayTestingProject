@@ -7,15 +7,15 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
-import Utils.Constants;
-import Utils.FrameworkProperties;
-import Utils.Utils;
-import drivers.DriverSingleton;
-import pages.BuyItemPage;
-import pages.CheckoutPage;
-import pages.HomePage;
-import pages.SearchResultsPage;
-import pages.SignInPage;
+import automation.Utils.Constants;
+import automation.Utils.FrameworkProperties;
+import automation.Utils.Utils;
+import automation.drivers.DriverSingleton;
+import automation.pages.BuyItemPage;
+import automation.pages.CheckoutPage;
+import automation.pages.HomePage;
+import automation.pages.SearchResultsPage;
+import automation.pages.SignInPage;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Tests {

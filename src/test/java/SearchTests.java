@@ -11,14 +11,14 @@ import org.openqa.selenium.WebDriver;
 
 import org.junit.runners.Parameterized;
 
-import Utils.Constants;
-import Utils.FrameworkProperties;
-import drivers.DriverSingleton;
-import pages.BuyItemPage;
-import pages.CheckoutPage;
-import pages.HomePage;
-import pages.SearchResultsPage;
-import pages.SignInPage;
+import automation.Utils.Constants;
+import automation.Utils.FrameworkProperties;
+import automation.drivers.DriverSingleton;
+import automation.pages.BuyItemPage;
+import automation.pages.CheckoutPage;
+import automation.pages.HomePage;
+import automation.pages.SearchResultsPage;
+import automation.pages.SignInPage;
 
 @RunWith(Parameterized.class)
 public class SearchTests {
