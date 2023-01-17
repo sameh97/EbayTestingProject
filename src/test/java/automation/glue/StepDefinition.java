@@ -15,7 +15,6 @@ import automation.pages.BuyItemPage;
 import automation.pages.CheckoutPage;
 import automation.pages.HomePage;
 import automation.pages.SearchResultsPage;
-import automation.pages.SignInPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

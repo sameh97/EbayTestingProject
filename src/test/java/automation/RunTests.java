@@ -2,6 +2,7 @@ package automation;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
@@ -12,4 +13,3 @@ public class RunTests {
 	public void tests() {
 	}
 }
-	
