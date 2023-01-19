@@ -14,6 +14,8 @@ import org.springframework.util.FileCopyUtils;
 import automation.drivers.DriverSingleton;
 
 public class Utils {
+	public static int testCount = 0;
+
 	public static boolean hasValue(Object obj) {
 		if (obj == null) {
 			return false;
