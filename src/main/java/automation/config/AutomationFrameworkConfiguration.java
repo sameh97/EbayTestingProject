@@ -1,11 +1,6 @@
 package automation.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@Configuration
-@ComponentScan("automation")
-public class AutomationFrameworkConfiguration {
-	public AutomationFrameworkConfiguration() {
-	}
-}
+@SpringBootApplication(scanBasePackages = "automation")
+public class AutomationFrameworkConfiguration {}
