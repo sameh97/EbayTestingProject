@@ -1,10 +1,9 @@
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import automation.Utils.Constants;
@@ -17,7 +16,9 @@ import automation.pages.HomePage;
 import automation.pages.SearchResultsPage;
 import automation.pages.SignInPage;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class Tests {
 	static FrameworkProperties frameworkProperties;
 	static WebDriver driver;
@@ -29,7 +30,7 @@ public class Tests {
 	static String inputString;
 	static Boolean expectedResult;
 
-	@BeforeClass
+	@BeforeAll
 	public static void initializeObjects() {
 		frameworkProperties = new FrameworkProperties();
 		DriverSingleton.getInstance(frameworkProperties.getProperty(Constants.BROWSER));
@@ -56,7 +57,7 @@ public class Tests {
 		assertEquals(checkoutPage.getSummaryProductsString(), frameworkProperties.getProperty("number_of_items"));
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void closeObjects() {
 		driver.close();
 	}

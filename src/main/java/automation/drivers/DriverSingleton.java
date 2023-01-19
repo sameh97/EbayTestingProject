@@ -1,11 +1,13 @@
 package automation.drivers;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 
 import automation.drivers.strategies.DriverStrategy;
 import automation.drivers.strategies.DriverStrategyImplementer;
+
+import static java.time.temporal.ChronoUnit.SECONDS;
 
 public class DriverSingleton {
 	private static DriverSingleton instance;
@@ -19,7 +21,7 @@ public class DriverSingleton {
 		DriverStrategy driverStrategy = DriverStrategyImplementer.chooseStrategy(strategy);
 
 		driver = driverStrategy.setStrategy();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.of(5, SECONDS));
 		driver.manage().window().maximize();
 
 		return driver;

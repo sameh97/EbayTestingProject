@@ -1,15 +1,12 @@
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import org.junit.runners.Parameterized;
+import org.openqa.selenium.WebDriver;
 
 import automation.Utils.Constants;
 import automation.Utils.FrameworkProperties;
@@ -20,7 +17,8 @@ import automation.pages.HomePage;
 import automation.pages.SearchResultsPage;
 import automation.pages.SignInPage;
 
-@RunWith(Parameterized.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class SearchTests {
 	static FrameworkProperties frameworkProperties;
 	static WebDriver driver;
@@ -29,10 +27,8 @@ public class SearchTests {
 	static SearchResultsPage searchResultsPage;
 	static BuyItemPage buyItemPage;
 	static CheckoutPage checkoutPage;
-	static String inputString;
-	static Boolean expectedResult;
 
-	@BeforeClass
+	@BeforeAll
 	public static void initializeObjects() {
 		frameworkProperties = new FrameworkProperties();
 		DriverSingleton.getInstance(frameworkProperties.getProperty(Constants.BROWSER));
@@ -43,24 +39,19 @@ public class SearchTests {
 		checkoutPage = new CheckoutPage();
 	}
 
-	public SearchTests(String inputString, Boolean expectedResult) {
-		this.inputString = inputString;
-		this.expectedResult = expectedResult;
-	}
-
-	@Parameterized.Parameters
 	public static Collection<Object[]> searchOptions() {
 		return Arrays.asList(
 				new Object[][] { { "Shirt", true }, { "jeans", true }, { "dsadwevcewv", false }, { "iphone", true } });
 	}
 
-	@Test
-	public void testingSearch() {
+	@ParameterizedTest
+        @MethodSource("searchOptions")
+	public void testingSearch(String inputString, boolean expectedResult) {
 		driver.get(Constants.URL);
 		assertEquals(expectedResult, homePage.searchElement(inputString));
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void closeObjects() {
 		driver.close();
 	}
