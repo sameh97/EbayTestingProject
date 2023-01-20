@@ -1,5 +1,12 @@
 /target/
 log/
+
+# Intellij
 .idea/
 *.iml
 *.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
