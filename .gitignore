@@ -1,10 +1,13 @@
 /target/
 log/
+report/
 
 # Intellij
 .idea/
 *.iml
 *.iws
+
+
 
 # Eclipse
 .classpath
